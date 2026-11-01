@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marecakes — Delicious Cakes, Crafted for Every Occasion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --current-font-heading: 'Plus Jakarta Sans', sans-serif;
+      --current-font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #a64766;
+      color: #ffffff;
+      font-family: var(--current-font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Photorealistic 3D Studio Cyclorama Stage Backdrop */
+    .cyclorama-stage {
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #a64766;
+      background-image:
+        /* Layer 1: Floor luminous reflection pool */
+        radial-gradient(ellipse 72% 28% at 50% 74%, rgba(255, 185, 207, 0.42) 0%, rgba(224, 134, 161, 0.18) 45%, transparent 75%),
+        /* Layer 2: Overhead key softbox light */
+        radial-gradient(ellipse 70% 48% at 50% 36%, rgba(240, 148, 175, 0.32) 0%, rgba(190, 80, 110, 0.12) 60%, transparent 100%),
+        /* Layer 3: Vignette */
+        radial-gradient(circle at 50% 50%, transparent 60%, rgba(70, 15, 35, 0.38) 100%),
+        /* Layer 4: Vertical wall-to-floor cove ramp */
+        linear-gradient(
+          180deg,
+          #9b405e 0%,
+          #a94d6c 22%,
+          #b85979 44%,
+          #c46586 58%,
+          #ce7393 64%,
+          #d985a3 70%,
+          #e091ad 73%,
+          #d4809e 78%,
+          #be6484 88%,
+          #a64867 100%
+        );
+    }
+
+    /* Cyclorama Cove Horizon Sheen */
+    .cyclorama-stage::before {
+      content: "";
+      position: absolute;
+      top: 66%;
+      left: 0;
+      right: 0;
+      height: 90px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.15) 30%,
+        rgba(255, 255, 255, 0.04) 70%,
+        transparent 100%
+      );
+      filter: blur(12px);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    /* Studio Grain */
+    .cyclorama-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      opacity: 0.25;
+    }
+
+    /* Glassmorphism Header */
+    header {
+      width: 100%;
+      padding-top: 1.75rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      position: relative;
+      z-index: 30;
+    }
+
+    .header-pill {
+      max-width: 840px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 9999px;
+      padding: 0.5rem 1.5rem;
+      box-shadow:
+        0 12px 36px -4px rgba(85, 12, 38, 0.22),
+        0 4px 12px 0 rgba(0, 0, 0, 0.06),
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+      transition: transform 0.3s ease;
+    }
+
+    .brand-link:hover .brand-logo {
+      transform: scale(1.1);
+    }
+
+    .brand-name {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: all 0.2s ease;
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff;
+    }
+
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 9999px;
+    }
+
+    .btn-sign-in {
+      background-color: #ffffff;
+      color: #2b111d;
+      border: none;
+      outline: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.55rem 1.45rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(80, 12, 35, 0.15);
+      transition: all 0.2s ease;
+    }
+
+    .btn-sign-in:hover {
+      background-color: #fff8fa;
+      transform: scale(1.04);
+      box-shadow: 0 6px 18px rgba(80, 12, 35, 0.22);
+    }
+
+    /* Main Hero Area: 2 Columns (Shifted left for spacious center) */
+    main {
+      flex: 1;
+      max-width: 1540px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 2rem 3.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-content {
+      flex: 0 0 40%;
+      max-width: 520px;
+    }
+
+    /* Frosted Badge Pill */
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 9999px;
+      padding: 0.45rem 1.15rem;
+      margin-bottom: 1.75rem;
+      box-shadow:
+        0 4px 16px rgba(90, 16, 40, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .badge-icon {
+      font-size: 1rem;
+    }
+
+    .badge-text {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Headline */
+    h1 {
+      font-family: var(--current-font-heading);
+      font-size: clamp(2.3rem, 4.2vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+      text-shadow: 0 2px 16px rgba(80, 15, 38, 0.2);
+    }
+
+    /* Subtitle */
+    p.subtitle {
+      font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      text-shadow: 0 1px 8px rgba(80, 15, 38, 0.15);
+    }
+
+    /* Action Buttons */
+    .buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.15rem;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #2b111d;
+      border: none;
+      outline: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow:
+        0 8px 24px -2px rgba(80, 12, 35, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .btn-primary:hover {
+      background-color: #fff9fb;
+      transform: translateY(-2px);
+      box-shadow:
+        0 14px 32px -2px rgba(80, 12, 35, 0.32),
+        0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.95rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow:
+        0 6px 20px -2px rgba(80, 12, 35, 0.18),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.85);
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 28px -2px rgba(80, 12, 35, 0.25),
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-primary:active, .btn-secondary:active {
+      transform: translateY(0.5px) scale(0.99);
+    }
+
+    /* RIGHT SIDE: Horizontal Scrolling Cake Showcase (BORDERLESS & TRANSPARENT) */
+    .showcase-wrapper {
+      flex: 1.25;
+      max-width: 650px;
+      width: 100%;
+      position: relative;
+    }
+
+    .showcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .showcase-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .showcase-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f9a8d4;
+    }
+
+    .showcase-nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .showcase-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.08);
+    }
+
+    /* Edge Fade Mask for Seamless Dissolve */
+    .track-viewport {
+      width: 100%;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%);
+    }
+
+    /* Horizontal Track (Drag & Touch Enabled) */
+    .cakes-track {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      padding-left: calc(50% - 150px);
+      padding-right: calc(50% - 150px);
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+      cursor: grab;
+    }
+
+    .cakes-track:active {
+      cursor: grabbing;
+    }
+
+    .cakes-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Card Item (TRANSPARENT BACKGROUND, ZERO BORDERS) */
+    .cake-card {
+      flex: 0 0 300px;
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      background: transparent;
+      border: none;
+      outline: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      will-change: transform, opacity;
+    }
+
+    /* Floating Badge (Borderless, Transparent) */
+    .cake-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(249, 168, 212, 0.95);
+      background: transparent;
+      border: none;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(60, 10, 25, 0.3);
+    }
+
+    .cake-image-box {
+      width: 270px;
+      height: 250px;
+      position: relative;
+      pointer-events: none;
+    }
+
+    .cake-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 24px rgba(60, 10, 25, 0.35));
+      user-select: none;
+    }
+
+    /* Contact Shadow grounded on the white floor reflection */
+    .cake-shadow {
+      width: 230px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(55, 10, 24, 0.48) 0%, rgba(85, 16, 38, 0.18) 50%, transparent 75%);
+      filter: blur(5px);
+      margin-top: -10px;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Transparent Typography Details (NO BORDERS, NO BOX) */
+    .cake-info-transparent {
+      margin-top: 1rem;
+      width: 100%;
+      text-align: center;
+      background: transparent;
+      border: none;
+      padding: 0 0.5rem;
+    }
+
+    .cake-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+      text-shadow: 0 2px 10px rgba(60, 10, 25, 0.3);
+    }
+
+    .cake-tagline {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-shadow: 0 1px 6px rgba(60, 10, 25, 0.25);
+    }
+
+    /* Pagination Dots (Seamless & Borderless) */
+    .dots-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .dot.active {
+      width: 28px;
+      background: #ffffff;
+    }
+
+    /* Footer Floor Elements */
+    footer {
+      width: 100%;
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 1.25rem 3.5rem 2.25rem 3.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-tags {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-item {
+      cursor: default;
+      transition: color 0.2s ease;
+    }
+
+    .tag-item:hover {
+      color: #ffffff;
+    }
+
+    /* Font Switcher */
+    .font-widget {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+    }
+
+    .font-btn-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 0.6rem 1.15rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .font-btn-trigger:hover {
+      background: rgba(0, 0, 0, 0.75);
+      transform: scale(1.04);
+    }
+
+    .font-panel {
+      display: none;
+      width: 320px;
+      background: rgba(20, 8, 14, 0.9);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      margin-bottom: 0.75rem;
+    }
+
+    .font-panel.open {
+      display: block;
+    }
+
+    .font-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin-bottom: 0.75rem;
+    }
+
+    .font-panel-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fbcfe8;
+    }
+
+    .font-panel-close {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .font-choice {
+      width: 100%;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .font-choice:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .font-choice.active {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: #ffffff;
+    }
+
+    .font-choice-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .font-choice-desc {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        flex-direction: column;
+        gap: 2.5rem;
+        padding-top: 2rem;
+      }
+      .hero-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      .buttons-row {
+        justify-content: center;
+      }
+      .showcase-wrapper {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-pill {
+        padding: 0.5rem 1.15rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .footer-tags {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cyclorama-stage">
+    <!-- Floating Glassmorphic Header -->
+    <header>
+      <div class="header-pill">
+        <!-- Logo Mascot on the Left -->
+        <a href="#" class="brand-link">
+          <img src="logo.png" onerror="this.src='public/logo.png'" alt="Marecakes Logo" class="brand-logo">
+          <span class="brand-name">Marecakes</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#" class="nav-link active">Home</a>
+          <a href="#" class="nav-link">Cakes</a>
+          <a href="#" class="nav-link">About</a>
+          <a href="#" class="nav-link">Contact</a>
+        </nav>
+        <button class="btn-sign-in">Sign In</button>
+      </div>
+    </header>
+
+    <!-- Main Hero Viewport -->
+    <main>
+      <!-- Left: Headline & Actions -->
+      <div class="hero-content">
+        <!-- Frosted Badge Pill -->
+        <div class="badge-pill">
+          <span class="badge-icon">🍰</span>
+          <span class="badge-text">Creating Memorable Cakes for Every Celebration</span>
+        </div>
+
+        <!-- Hero Headline -->
+        <h1>Delicious Cakes,<br>Crafted for<br>Every Occasion</h1>
+
+        <!-- Subtitle Paragraph -->
+        <p class="subtitle">
+          Indulge in our freshly baked, premium cakes made from the finest ingredients. Perfect for birthdays, weddings, or any special moment. Taste the difference with every bite.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="buttons-row">
+          <button class="btn-primary">Order Now</button>
+          <button class="btn-secondary">Browse Our Cakes</button>
+        </div>
+      </div>
+
+      <!-- Right: Seamless Horizontal Scrolling Cake Showcase (BORDERLESS & TRANSPARENT) -->
+      <div class="showcase-wrapper">
+        <div class="showcase-header">
+          <div class="showcase-title">
+            <span class="showcase-dot"></span>
+            <span>Artisanal Collection</span>
+          </div>
+          <div style="display: flex; gap: 0.35rem;">
+            <button class="showcase-nav-btn" onclick="scrollCakes(-1)" aria-label="Previous cake">‹</button>
+            <button class="showcase-nav-btn" onclick="scrollCakes(1)" aria-label="Next cake">›</button>
+          </div>
+        </div>
+
+        <!-- Track with Edge Fading Masks (Infinite Loop) -->
+        <div class="track-viewport">
+          <div class="cakes-track" id="cakesTrack">
+            <!-- SET 0 (Prepend for Left Loop) -->
+            <div class="cake-card" data-index="0">
+              <span class="cake-badge">✨ Bestseller</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-chocolate.png" onerror="this.src='public/cakes/cake-chocolate.png'" alt="Belgian Chocolate Drip" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Belgian Chocolate Drip</div>
+                <div class="cake-tagline">Rich dark cocoa ganache, fresh raspberries & truffles</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="1">
+              <span class="cake-badge">✨ Seasonal</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-strawberry.png" onerror="this.src='public/cakes/cake-strawberry.png'" alt="Strawberry Rose Glaze" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Strawberry Rose Glaze</div>
+                <div class="cake-tagline">Fluffy sponge with silky glaze & fresh berries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="2">
+              <span class="cake-badge">✨ Celebration</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-mint.png" onerror="this.src='public/cakes/cake-mint.png'" alt="Pastel Mint & Cherries" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Pastel Mint & Cherries</div>
+                <div class="cake-tagline">Refreshing mint cream with candied cherries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="3">
+              <span class="cake-badge">✨ Party Favorite</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-slices.png" onerror="this.src='public/cakes/cake-slices.png'" alt="6-Flavor Signature Wheel" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">6-Flavor Signature Wheel</div>
+                <div class="cake-tagline">Lotus Biscoff, Matcha, Ube, Cookies & Cream, Red Velvet</div>
+              </div>
+            </div>
+
+            <!-- SET 1 (Middle Initial Set) -->
+            <div class="cake-card" data-index="4">
+              <span class="cake-badge">✨ Bestseller</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-chocolate.png" onerror="this.src='public/cakes/cake-chocolate.png'" alt="Belgian Chocolate Drip" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Belgian Chocolate Drip</div>
+                <div class="cake-tagline">Rich dark cocoa ganache, fresh raspberries & truffles</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="5">
+              <span class="cake-badge">✨ Seasonal</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-strawberry.png" onerror="this.src='public/cakes/cake-strawberry.png'" alt="Strawberry Rose Glaze" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Strawberry Rose Glaze</div>
+                <div class="cake-tagline">Fluffy sponge with silky glaze & fresh berries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="6">
+              <span class="cake-badge">✨ Celebration</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-mint.png" onerror="this.src='public/cakes/cake-mint.png'" alt="Pastel Mint & Cherries" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Pastel Mint & Cherries</div>
+                <div class="cake-tagline">Refreshing mint cream with candied cherries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="7">
+              <span class="cake-badge">✨ Party Favorite</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-slices.png" onerror="this.src='public/cakes/cake-slices.png'" alt="6-Flavor Signature Wheel" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">6-Flavor Signature Wheel</div>
+                <div class="cake-tagline">Lotus Biscoff, Matcha, Ube, Cookies & Cream, Red Velvet</div>
+              </div>
+            </div>
+
+            <!-- SET 2 (Append for Right Loop) -->
+            <div class="cake-card" data-index="8">
+              <span class="cake-badge">✨ Bestseller</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-chocolate.png" onerror="this.src='public/cakes/cake-chocolate.png'" alt="Belgian Chocolate Drip" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Belgian Chocolate Drip</div>
+                <div class="cake-tagline">Rich dark cocoa ganache, fresh raspberries & truffles</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="9">
+              <span class="cake-badge">✨ Seasonal</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-strawberry.png" onerror="this.src='public/cakes/cake-strawberry.png'" alt="Strawberry Rose Glaze" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Strawberry Rose Glaze</div>
+                <div class="cake-tagline">Fluffy sponge with silky glaze & fresh berries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="10">
+              <span class="cake-badge">✨ Celebration</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-mint.png" onerror="this.src='public/cakes/cake-mint.png'" alt="Pastel Mint & Cherries" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">Pastel Mint & Cherries</div>
+                <div class="cake-tagline">Refreshing mint cream with candied cherries</div>
+              </div>
+            </div>
+            <div class="cake-card" data-index="11">
+              <span class="cake-badge">✨ Party Favorite</span>
+              <div class="cake-image-box">
+                <img src="cakes/cake-slices.png" onerror="this.src='public/cakes/cake-slices.png'" alt="6-Flavor Signature Wheel" class="cake-img">
+              </div>
+              <div class="cake-shadow"></div>
+              <div class="cake-info-transparent">
+                <div class="cake-name">6-Flavor Signature Wheel</div>
+                <div class="cake-tagline">Lotus Biscoff, Matcha, Ube, Cookies & Cream, Red Velvet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div class="dots-row">
+          <button class="dot active" onclick="goToCake(0)"></button>
+          <button class="dot" onclick="goToCake(1)"></button>
+          <button class="dot" onclick="goToCake(2)"></button>
+          <button class="dot" onclick="goToCake(3)"></button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floor Plane Bracket Labels -->
+    <footer>
+      <div class="footer-tags">
+        <div class="tag-item">[ Delicious Perfection ]</div>
+        <div class="tag-item">[ Crafted with Love ]</div>
+        <div class="tag-item">[ Elegantly Decorated ]</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Interactive Font Customizer -->
+  <div class="font-widget">
+    <div class="font-panel" id="fontPanel">
+      <div class="font-panel-header">
+        <span class="font-panel-title">✨ Font Style Tester</span>
+        <button class="font-panel-close" onclick="toggleFontPanel()">Close ✕</button>
+      </div>
+      <button class="font-choice active" onclick="setFont('Plus Jakarta Sans', 'Plus Jakarta Sans', this)">
+        <div class="font-choice-name">Plus Jakarta Sans</div>
+        <div class="font-choice-desc">Modern Geometric — clean, confident, premium</div>
+      </button>
+      <button class="font-choice" onclick="setFont('Outfit', 'Outfit', this)">
+        <div class="font-choice-name">Outfit</div>
+        <div class="font-choice-desc">Soft Modern Sans — friendly, confectionery feel</div>
+      </button>
+      <button class="font-choice" onclick="setFont('Playfair Display', 'Plus Jakarta Sans', this)">
+        <div class="font-choice-name">Playfair Display</div>
+        <div class="font-choice-desc">Editorial Luxury Serif — haute pâtisserie & weddings</div>
+      </button>
+      <button class="font-choice" onclick="setFont('Cormorant Garamond', 'Plus Jakarta Sans', this)">
+        <div class="font-choice-name">Cormorant Garamond</div>
+        <div class="font-choice-desc">Artisanal Heritage Serif — French bakery luxury</div>
+      </button>
+      <button class="font-choice" onclick="setFont('Inter', 'Inter', this)">
+        <div class="font-choice-name">Inter</div>
+        <div class="font-choice-desc">Clean Swiss Grotesque — crisp and minimal</div>
+      </button>
+    </div>
+    <button class="font-btn-trigger" onclick="toggleFontPanel()">
+      <span>Aa</span>
+      <span id="activeFontLabel">Font: Plus Jakarta Sans</span>
+      <span style="opacity: 0.6; font-size: 0.75rem;">▼</span>
+    </button>
+  </div>
+
+  <script>
+    const track = document.getElementById('cakesTrack');
+    const cards = document.querySelectorAll('.cake-card');
+    let isInteracting = false;
+    let isDown = false;
+    let moved = false;
+    let startX, scrollLeftStart;
+    let scrollPos = 0;
+    const speed = 0.75; // Silky smooth constant forward velocity
+
+    function getCycleWidth() {
+      if (cards[0] && cards[4]) {
+        return cards[4].offsetLeft - cards[0].offsetLeft;
+      }
+      return 0;
+    }
+
+    // Real-time center fade & scale
+    function updateCardFades() {
+      const containerRect = track.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      const maxDistance = containerRect.width * 0.55;
+
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(containerCenter - cardCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+
+        const normDist = Math.min(distance / maxDistance, 1);
+        const opacity = Math.max(1 - Math.pow(normDist, 1.15) * 0.74, 0.26);
+        const scale = Math.max(1.06 - Math.pow(normDist, 1.15) * 0.22, 0.84);
+        const shadowOpacity = Math.max(1 - normDist * 0.75, 0.2);
+
+        card.style.opacity = opacity;
+        card.style.transform = `scale(${scale})`;
+
+        const shadow = card.querySelector('.cake-shadow');
+        if (shadow) shadow.style.opacity = shadowOpacity;
+      });
+
+      updateDots(closestIdx % 4);
+    }
+
+    function updateDots(activeRealIdx) {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeRealIdx) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    }
+
+    // Continuous marquee animation loop: Never resets back to cake 1
+    function continuousTick() {
+      const cycleWidth = getCycleWidth();
+
+      if (!isInteracting && !isDown && cycleWidth > 0) {
+        scrollPos += speed;
+        // Seamless infinite progression
+        if (scrollPos >= cycleWidth * 2) {
+          scrollPos -= cycleWidth;
+        }
+        track.scrollLeft = scrollPos;
+      } else {
+        scrollPos = track.scrollLeft;
+        if (cycleWidth > 0) {
+          if (track.scrollLeft >= cycleWidth * 2.5) {
+            track.scrollLeft -= cycleWidth;
+            scrollPos = track.scrollLeft;
+          } else if (track.scrollLeft <= cycleWidth * 0.5) {
+            track.scrollLeft += cycleWidth;
+            scrollPos = track.scrollLeft;
+          }
+        }
+      }
+
+      updateCardFades();
+      requestAnimationFrame(continuousTick);
+    }
+
+    function scrollCakes(direction) {
+      const amount = direction * 320;
+      scrollPos += amount;
+      track.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    function goToCake(index) {
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    // Dot click focuses next occurrence of that flavor
+    document.querySelectorAll('.dot').forEach((dot, dotIdx) => {
+      dot.onclick = () => {
+        const target = Array.from(cards).find(
+          (c, idx) => idx % 4 === dotIdx && c.offsetLeft > track.scrollLeft
+        );
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      };
+    });
+
+    cards.forEach((card, idx) => {
+      card.onclick = () => {
+        if (!moved) goToCake(idx);
+      };
+    });
+
+    // Hover & Drag state handlers
+    track.addEventListener('mouseenter', () => { isInteracting = true; });
+    track.addEventListener('mouseleave', () => {
+      isInteracting = false;
+      isDown = false;
+    });
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      moved = false;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeftStart = track.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => { isDown = false; });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      moved = true;
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.35;
+      track.scrollLeft = scrollLeftStart - walk;
+      scrollPos = track.scrollLeft;
+    });
+
+    window.addEventListener('resize', updateCardFades);
+
+    // Initial positioning in middle cycle
+    setTimeout(() => {
+      const cycleWidth = getCycleWidth();
+      if (cycleWidth > 0) {
+        track.scrollLeft = cycleWidth;
+        scrollPos = cycleWidth;
+      }
+      updateCardFades();
+      requestAnimationFrame(continuousTick);
+    }, 60);
+
+    function toggleFontPanel() {
+      const panel = document.getElementById('fontPanel');
+      panel.classList.toggle('open');
+    }
+
+    function setFont(headingFont, bodyFont, btn) {
+      document.documentElement.style.setProperty('--current-font-heading', `'${headingFont}', sans-serif`);
+      document.documentElement.style.setProperty('--current-font-body', `'${bodyFont}', sans-serif`);
+      document.getElementById('activeFontLabel').textContent = `Font: ${headingFont}`;
+      
+      document.querySelectorAll('.font-choice').forEach(el => el.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
